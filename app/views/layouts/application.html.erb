@@ -21,7 +21,7 @@
           <p class="alert"><%= alert %></p>
         </div>
     <%end%>
-    
+
      <header>
         <div class="navbar-item">
             <%= link_to root_path, class:  "navbar-item" do%>
@@ -31,12 +31,28 @@
               <%if user_signed_in?%>
                 <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
               <%else%>
-              <%= link_to 'ログイン',new_user_session_path%>
-              <%= link_to '新規登録', new_user_registration_path%>
+                <%= link_to 'ログイン',new_user_session_path%>
+                <%= link_to '新規登録', new_user_registration_path%>
+          　  <%end%>
+          　</div>
+            <div class="user_contents" >
+              <%= link_to 'マイページ' ,profile_mypage_path(id: current_user)%>
+              <%= link_to '投稿したコミュニティ' %>
+              <%= link_to 'フォローしたコミュニティ'%>
             </div>
-            <%end%>
+
         </div>
       </header>
     <%= yield %>
   </body>
 </html>
+
+<style>
+    .user_contents {
+
+       text-align: right;
+       display: flex;
+       flex-direction: column;
+    }
+
+</style>
