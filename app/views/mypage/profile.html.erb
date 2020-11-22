@@ -1,8 +1,49 @@
 
-<%= attachment_image_tag @user, :profile_image, fallback: "no-image-icon_person.jpg", class: "profile_image is-rounded" %>
+<section class="section">
+  <div class="container">
 
-<%= @user.username %>
+          <figure class="image is-128x128"  style="margin-left: auto; margin-right: auto;">
+              <%= attachment_image_tag @user, :profile_image, fallback: "no-image-icon_person.jpg"  ,class: "profile_image_user" %>
+          </figure>
+         <table class="profile_mypage">
+            <tr>
+              <td class="profile_font">
+                <%= @user.username  %>
+              </td>
 
-<%= link_to "編集", edit_user_path(@user), class: "button is-primary" %>
+              <td class="profile_font">
+                <%= @user.profile  %>
+              </td>
 
-<%= @user.profile %>
+              <td >
+                <%= link_to "編集", edit_user_path(@user), class: "btn btn-primary btn-lg" %>
+              </td>
+            </tr>
+         </table>
+   </div>
+</section>
+
+<style>
+
+  .profile_mypage {
+    text-align: center;
+    
+
+  }
+
+
+
+  <!-- .profile_image_user {
+    object-fit:cover;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+  } -->
+
+  .profile_font {
+    font-size:30px;
+
+  }
+
+
+</style>
