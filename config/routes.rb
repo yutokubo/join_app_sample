@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'mypage/profile'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: "home#index"
+  resources :"users"
+  resources :"communities"
+
+  resources :mypage, only: [:profile] do
+    member do
+      get 'profile'
+    end
+  end
 end
