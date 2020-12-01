@@ -1,0 +1,8 @@
+
+<%= attachment_image_tag  @community, :intro_image, fallback: "no-image-icon_person.jpg", class: "intro_image" %>
+
+<%= @community.title %>
+
+<%= simple_format @community.introduction %>
+
+<%= @community.user.username %>

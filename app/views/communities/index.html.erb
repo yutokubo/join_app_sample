@@ -1,0 +1,21 @@
+
+
+<div class="index">
+  <%= @communities.each do |community| %>
+       <%= link_to community_path(community) do %>
+         <div class="index_box">
+            <figure>
+              <%= attachment_image_tag community, :intro_image, fallback: "no-image-icon_person.jpg", class: "intro_image" %>
+            </figure>
+
+            <div class="b">
+              <%= community.title %>         <%# テーブル名.カラム名 %>
+            </div>
+
+            <div class="c">
+              <%= community.user.username %> <%# 1_テーブル名.1_に紐づくテーブル名.カラム名 %>
+            </div>
+        </div>
+       <% end %>
+   <%end%>
+ </div>

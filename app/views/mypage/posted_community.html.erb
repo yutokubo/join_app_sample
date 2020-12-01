@@ -1,0 +1,10 @@
+
+<%= @communities.each do |community| %>
+  <%= link_to community_path(community) do %>
+      <%= attachment_image_tag  community, :intro_image, fallback: "no-image-icon_person.jpg", class: "intro_image" %>
+
+      <%=  community.title %>
+
+      <%=  community.user.username %>
+  <%end%>
+<%end%>
