@@ -16,7 +16,7 @@ class CommunitiesController < ApplicationController
     end
 
     def edit
-      
+
     end
 
     def index
@@ -39,7 +39,7 @@ class CommunitiesController < ApplicationController
     end
 
     def set_community
-        @community  = Community.find(params[:id])
+      @community  = Community.find(params[:id])
     end
 
 end
