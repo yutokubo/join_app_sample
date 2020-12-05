@@ -1,5 +1,7 @@
 class CommunitiesController < ApplicationController
 
+  before_action :set_community, only: [:edit, :show, :update]
+
     def new
        @community = Community.new
     end
@@ -14,7 +16,7 @@ class CommunitiesController < ApplicationController
     end
 
     def edit
-       @community = Community.find(params[:id])
+      
     end
 
     def index
@@ -22,11 +24,10 @@ class CommunitiesController < ApplicationController
     end
 
     def show
-       @community = Community.find(params[:id])
+
     end
 
     def update
-      @community  = Community.find(params[:id])
       @community.update(community_params)
       redirect_to communities_path
     end
@@ -36,4 +37,9 @@ class CommunitiesController < ApplicationController
       community_params
       params.require(:community).permit(:title, :introduction, :intro_image)#ストロングパラメータを定義
     end
+
+    def set_community
+        @community  = Community.find(params[:id])
+    end
+
 end
