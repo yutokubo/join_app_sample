@@ -1,21 +1,38 @@
+<div class="container">
+    <div class="row">
+      <% @communities.each do |community| %>
+         <div class="col-3">
+            <%= link_to community_path(community) do %>
+               <div class="card" style="width: 14rem;">
+                  <div class="card-image">
+                    <%= attachment_image_tag community, :intro_image, fallback:"no-image.jpg", class:"rounded-top"%>
+                  </div>
+
+                  <div class="card-body">
+                    <%= community.title %>
+                  </div>
+               </div>
+            <%end%>
+          </div>         　
+       <%end%>
+    </div>
+</div>
+
+    <style>
+      .intro_image {
+        width: 222px;
+        height: 180px;
+
+      }
 
 
-<div class="index">
-  <%= @communities.each do |community| %>
-       <%= link_to community_path(community) do %>
-         <div class="index_box">
-            <figure>
-              <%= attachment_image_tag community, :intro_image, fallback: "no-image-icon_person.jpg", class: "intro_image" %>
-            </figure>
 
-            <div class="b">
-              <%= community.title %>         <%# テーブル名.カラム名 %>
-            </div>
+      .row {
+         padding-top: 30px;
+      }
 
-            <div class="c">
-              <%= community.user.username %> <%# 1_テーブル名.1_に紐づくテーブル名.カラム名 %>
-            </div>
-        </div>
-       <% end %>
-   <%end%>
- </div>
+      .card {
+        height:330px;
+      }
+
+    </style>
