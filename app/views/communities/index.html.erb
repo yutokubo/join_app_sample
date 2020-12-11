@@ -1,16 +1,24 @@
 <div class="container">
     <div class="row">
       <% @communities.each do |community| %>
-         <div class="col-3">
+         <div class="col">
             <%= link_to community_path(community) do %>
                <div class="card" style="width: 14rem;">
                   <div class="card-image">
-                    <%= attachment_image_tag community, :intro_image, fallback:"no-image.jpg", class:"rounded-top"%>
+                    <%= attachment_image_tag community, :intro_image, fallback:"no-image.jpg", class:"rounded-top" %>
                   </div>
 
                   <div class="card-body">
                     <%= community.title %>
+                    <%= community.introduction%>
                   </div>
+
+                  <% if current_user.present? && current_user.following?(community) %>
+                    <%= link_to 'フォローを外す', community_follows_path(community), method: :destroy %>
+                  <% else %>
+                    <%= link_to 'フォロー', community_follows_path(community), method: :post %>
+                  <%end%>
+                  <%= community.follows.count %>
                </div>
             <%end%>
           </div>         　
@@ -33,6 +41,7 @@
 
       .card {
         height:330px;
+
       }
 
     </style>
