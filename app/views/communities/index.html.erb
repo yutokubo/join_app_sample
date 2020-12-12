@@ -14,9 +14,13 @@
                   </div>
 
                   <% if current_user.present? && current_user.following?(community) %>
-                    <%= link_to 'フォローを外す', community_follows_path(community), method: :destroy %>
+                    <%= link_to  community_follows_path(community.id), method: :delete, remote: true do %>
+                      <i class="fas fa-grin-stars"></i>
+                    <%end%>
                   <% else %>
-                    <%= link_to 'フォロー', community_follows_path(community), method: :post %>
+                    <%= link_to  community_follows_path(community.id), method: :post, remote: true do %>
+                      <i class="far fa-grin-stars"></i>
+                    <%end%>
                   <%end%>
                   <%= community.follows.count %>
                </div>
