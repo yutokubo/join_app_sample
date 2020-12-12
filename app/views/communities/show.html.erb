@@ -1,8 +1,46 @@
 
-<%= attachment_image_tag  @community, :intro_image, fallback: "no-image.jpg", class: "intro_image" %>
+<div class="container">
 
-<%= @community.title %>
+  <div class="col_1">
+    <div class="image">
+      <%= attachment_image_tag  @community, :intro_image, fallback: "no-image.jpg", class: "intro_image" %>
+    </div>
 
-<%= simple_format @community.introduction %>
+    <div class="community_title">
+      <%= @community.title %>
+    </div>
 
-<%= @community.user.username %>
+    <div class="introduction">
+     <%= simple_format @community.introduction %>
+    </div>
+  </div>
+
+  <div class="col_2">
+    <%= @community.user.username %>
+  </div>
+
+
+</div>
+
+
+<style>
+  .col_1 {
+    text-align:center;
+  }
+
+  .intro_image {
+    width : 600px;
+    height: 300px;
+    margin-top: 50px;
+  }
+
+  .community_title {
+    font-size:  50px;
+  }
+
+  .container {
+
+  }
+
+
+</style>
