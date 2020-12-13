@@ -20,6 +20,8 @@ class CommunitiesController < ApplicationController
       if @community.user_id != current_user.id
         redirect_to communities_path, alert: '不正なアクセスです。'
       end
+      @community = Community.find(params[:id])
+      
     end
 
     def index
@@ -27,6 +29,7 @@ class CommunitiesController < ApplicationController
     end
 
     def show
+
 
     end
 

@@ -34,7 +34,7 @@
                 <%= link_to 'マイページ', profile_mypage_path(id: current_user) %>      　　
                 <%= link_to 'コミュニティを作成する', new_community_path(id: current_user) %>
                 <%= link_to '投稿したコミュニティ' , posted_community_mypage_path(id: current_user) %>
-                <%= link_to 'フォローしたコミュニティ' %>
+                <%= link_to 'フォローしたコミュニティ', following_community_mypage_path(id: current_user) %>
       　　　　　</div>
             </div>
              <%else%>
@@ -52,7 +52,7 @@
        text-align: right;
        display: flex;
        flex-direction: column;
-      
+
     }
 <<<<<<< HEAD
 =======

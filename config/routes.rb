@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     member do
       get 'profile'
       get 'posted_community'
-      get 'followed_community'
+      get 'following_community'
     end
   end
 end

@@ -7,4 +7,8 @@ class MypageController < ApplicationController
   def posted_community
     @communities = Community.where(user_id: current_user.id)
   end
+
+  def following_community
+    @communities = Community.where(user_id: current_user.id)
+  end
 end

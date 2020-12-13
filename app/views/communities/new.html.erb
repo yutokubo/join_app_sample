@@ -1,40 +1,4 @@
 
-<section>
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="co_post_form">
-          <%= form_for @community do |f| %>
-              <div class="field">
-                <%= f.label :title%>
-                <%= f.text_field :title %>
-              </div>
+<h2>コミュニティ新規作成</h2>
 
-             <div class="body">
-               <%= f.label :introduction ,class:"introduction"%>
-               <%= f.text_area :introduction ,class:"introduction" %>
-             </div>
-
-             <div class="image">
-               <%= f.label :intro_image %>
-               <%= f.attachment_field :intro_image %>
-             </div>
-
-             <%= f.submit '作成', class:"btn btn-primary btn-lg"%>
-          <%end%>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-  section {
-    text-align:center;
-
-    padding-top:100px;
-  }
-
- .introduction {
-   weight:120px;
- }
-
-</style>
+<%= render "form" %>
