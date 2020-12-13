@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_125227) do
+ActiveRecord::Schema.define(version: 2020_12_05_065224) do
 
   create_table "communities", force: :cascade do |t|
     t.integer "user_id"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2020_11_27_125227) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_communities_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.integer "community_id"
+    t.index ["community_id"], name: "index_follows_on_community_id"
+    t.index ["user_id", "community_id"], name: "index_follows_on_user_id_and_community_id", unique: true
+    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,4 +47,6 @@ ActiveRecord::Schema.define(version: 2020_11_27_125227) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "follows", "communities"
+  add_foreign_key "follows", "users"
 end
