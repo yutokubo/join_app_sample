@@ -3,6 +3,9 @@ class Community < ApplicationRecord
   attachment :intro_image
   has_many :follows, dependent: :destroy
 
+  # belongs_to :room
+
+
   with_options if: :published? do
     validates :title, presence: true
     validates :introduction, presence: true

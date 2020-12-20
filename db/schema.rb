@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_065224) do
+ActiveRecord::Schema.define(version: 2020_12_19_084620) do
 
   create_table "communities", force: :cascade do |t|
     t.integer "user_id"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(version: 2020_12_05_065224) do
     t.index ["user_id"], name: "index_communities_on_user_id"
   end
 
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
   create_table "follows", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -30,6 +39,19 @@ ActiveRecord::Schema.define(version: 2020_12_05_065224) do
     t.index ["community_id"], name: "index_follows_on_community_id"
     t.index ["user_id", "community_id"], name: "index_follows_on_user_id_and_community_id", unique: true
     t.index ["user_id"], name: "index_follows_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,6 +69,8 @@ ActiveRecord::Schema.define(version: 2020_12_05_065224) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "entries", "rooms"
+  add_foreign_key "entries", "users"
   add_foreign_key "follows", "communities"
   add_foreign_key "follows", "users"
 end

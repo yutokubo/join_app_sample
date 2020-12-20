@@ -7,6 +7,14 @@ GIT
       rest-client (~> 2)
       sinatra (~> 2.0.0.beta2)
 
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: d32beae1ed41353c9b74db8b30512deb2366a0cf
+  branch: master
+  specs:
+    faker (2.15.1)
+      i18n (>= 1.6, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -275,6 +283,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
+  faker!
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)

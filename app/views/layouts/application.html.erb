@@ -35,6 +35,8 @@
                 <%= link_to 'コミュニティを作成する', new_community_path(id: current_user) %>
                 <%= link_to '投稿したコミュニティ' , posted_community_mypage_path(id: current_user) %>
                 <%= link_to 'フォローしたコミュニティ', following_community_mypage_path(id: current_user) %>
+                <%# <%= link_to 'メッセージ', chat_path(id: current_user) %> 
+
       　　　　　</div>
             </div>
              <%else%>

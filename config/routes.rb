@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     resource :follows, only: [:create, :destroy]
   end
 
-
-
   resources :mypage, only: [:profile] do
     member do
       get 'profile'
@@ -19,4 +17,11 @@ Rails.application.routes.draw do
       get 'following_community'
     end
   end
+
+
+  # get 'rooms_personal/index' => 'rooms_personal#index'
+  get 'rooms_personal/show' => 'rooms_personal#show'
+  # get 'rooms_personal/create' => 'rooms_personal#create'
+
+  resources :messages, only: :create
 end

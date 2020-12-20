@@ -1,33 +1,32 @@
 <div class="container">
-    <div class="row">
-      <% @communities.each do |community| %>
-         <div class="col">
-            <%= link_to community_path(community) do %>
-               <div class="card" style="width: 14rem;">
-                  <div class="card-image">
-                    <%= attachment_image_tag community, :intro_image, fallback:"no-image.jpg", class:"rounded-top" %>
-                  </div>
-
-                  <div class="card-body">
-                    <%= community.title %>
-                    <%= community.introduction%>
-                  </div>
+  <div class="row">
+    <% @communities.each do |community| %>
+      　<div class="col-md-3">
+          <%= link_to community_path(community) do %>
+            <div class="card mb-4 shadow-sm" style="width: 14rem;">
+              <%= attachment_image_tag community, :intro_image, fallback:"no-image.jpg", class:"card-img-top" %>
+               <div class="card-body">
+                 <h5 class="card-title"><%= community.title %></h5>
+                 <p class="card-text"><%= community.introduction%></p>
+                 <div class="d-flex justify-content-between align-items-center">
 
                   <% if current_user.present? && current_user.following?(community) %>
                     <%= link_to  community_follows_path(community.id), method: :delete, remote: true do %>
-　　　　　　　　　　　　　<button type="button" class="btn btn-primary btn-sm">フォローを外す</button>
+                      <button type="button" class="btn btn-primary btn-sm">フォローを外す</button>
                     <%end%>
                   <% else %>
                     <%= link_to  community_follows_path(community.id), method: :post, remote: true do %>
-                    <button type="button" class="btn btn-outline-primary btn-sm">フォロー</button>
+                      <button type="button" class="btn btn-outline-primary btn-sm">フォロー</button>
                     <%end%>
                   <%end%>
-                  <%= community.follows.count %>
-               </div>
-            <%end%>
-          </div>         　
-       <%end%>
-    </div>
+                  <small class="text-muted"><%= community.follows.count %></small>
+                </div>
+              </div>
+            </div>
+          <%end%>
+      </div>
+    <%end%>
+  </div>
 </div>
 
     <style>

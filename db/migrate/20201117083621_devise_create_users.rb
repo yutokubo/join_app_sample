@@ -33,7 +33,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       # t.datetime :locked_at
       t.string :username
       t.text   :profile
-      t.string :profile_image_id 
+      t.string :profile_image_id
+
 
       t.timestamps null: false
     end
