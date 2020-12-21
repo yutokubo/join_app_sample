@@ -15,35 +15,34 @@
           <p class="notice"><%= notice %></p>
         </div>
     <%end%>
+
     <%if flash[:alert]%>
         <div class="notification_alert">
           <p class="alert"><%= alert %></p>
         </div>
     <%end%>
 
-     <header>
+      <header>
         <div class="navbar-item">
             <%= link_to root_path, class:  "navbar-item" do%>
             <h1 class="title" style="">Join2</h1>
             <%end%>
             <div class="auth_func">
-              <% if user_signed_in?%>
+              <% if user_signed_in? %>
                 <%= link_to 'ログアウト',destroy_user_session_path, method: :delete %>
+               <div class="user_contents">         　
+                <%= link_to 'マイページ', profile_mypage_path(id: current_user) %>      　　
+                <%= link_to 'コミュニティを作成する', new_community_path(id: current_user) %>
+                <%= link_to '投稿したコミュニティ' , posted_community_mypage_path(id: current_user) %>
+                <%= link_to 'フォローしたコミュニティ', following_community_mypage_path(id: current_user) %>
+                <%# <%= link_to 'メッセージ', chat_path(id: current_user) %> 
+
+      　　　　　</div>
+            </div>
              <%else%>
-                <%= link_to 'ログイン',new_user_session_path%>
-                <%= link_to '新規登録', new_user_registration_path%>
+                <%= link_to 'ログイン', new_user_session_path %>
+                <%= link_to '新規登録', new_user_registration_path %>
           　  <%end%>
-          　</div>
-            <div class="user_contents" >
-            　 　<% if current_user %>
-            　　　<%= link_to 'マイページ' ,profile_mypage_path(id: current_user)%>
-　　　　　　　　 　<% end %>
-
-                <%= link_to 'コミュニティを作成する' ,new_community_path(id: current_user)%>
-                <%= link_to '投稿したコミュニティ'  ,posted_community_mypage_path(id: current_user)%>
-                <%= link_to 'フォローしたコミュニティ'%>
-
-　　　　　　　</div>
         </div>
       </header>
     <%= yield %>
@@ -55,6 +54,7 @@
        text-align: right;
        display: flex;
        flex-direction: column;
+
     }
 <<<<<<< HEAD
 =======

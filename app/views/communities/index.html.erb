@@ -1,21 +1,50 @@
+<div class="container">
+  <div class="row">
+    <% @communities.each do |community| %>
+      　<div class="col-md-3">
+          <%= link_to community_path(community) do %>
+            <div class="card mb-4 shadow-sm" style="width: 14rem;">
+              <%= attachment_image_tag community, :intro_image, fallback:"no-image.jpg", class:"card-img-top" %>
+               <div class="card-body">
+                 <h5 class="card-title"><%= community.title %></h5>
+                 <p class="card-text"><%= community.introduction%></p>
+                 <div class="d-flex justify-content-between align-items-center">
 
-
-<div class="index">
-  <%= @communities.each do |community| %>
-       <%= link_to community_path(community) do %>
-         <div class="index_box">
-            <figure>
-              <%= attachment_image_tag community, :intro_image, fallback: "no-image-icon_person.jpg", class: "intro_image" %>
-            </figure>
-
-            <div class="b">
-              <%= community.title %>         <%# テーブル名.カラム名 %>
+                  <% if current_user.present? && current_user.following?(community) %>
+                    <%= link_to  community_follows_path(community.id), method: :delete, remote: true do %>
+                      <button type="button" class="btn btn-primary btn-sm">フォローを外す</button>
+                    <%end%>
+                  <% else %>
+                    <%= link_to  community_follows_path(community.id), method: :post, remote: true do %>
+                      <button type="button" class="btn btn-outline-primary btn-sm">フォロー</button>
+                    <%end%>
+                  <%end%>
+                  <small class="text-muted"><%= community.follows.count %></small>
+                </div>
+              </div>
             </div>
+          <%end%>
+      </div>
+    <%end%>
+  </div>
+</div>
 
-            <div class="c">
-              <%= community.user.username %> <%# 1_テーブル名.1_に紐づくテーブル名.カラム名 %>
-            </div>
-        </div>
-       <% end %>
-   <%end%>
- </div>
+    <style>
+      .intro_image {
+        width: 222px;
+        height: 180px;
+
+      }
+
+
+
+      .row {
+         padding-top: 30px;
+      }
+
+      .card {
+        height:330px;
+
+      }
+
+    </style>

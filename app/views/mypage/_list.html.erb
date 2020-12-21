@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+      <% @communities.each do |community| %>
+         <div class="col-3">
+            <%= link_to community_path(community) do %>
+               <div class="card" style="width: 14rem;">
+                  <div class="card-image">
+                    <%= attachment_image_tag community, :intro_image, fallback:"no-image.jpg", class:"rounded-top" %>
+                  </div>
+
+                  <div class="card-body">
+                    <%= community.title %>
+                    <%= community.introduction%>
+                  </div>
+               </div>
+            <%end%>
+          </div>         　
+       <%end%>
+    </div>
+</div>
+
+    <style>
+
+
+      .intro_image {
+        width: 222px;
+        height: 180px;
+
+      }
+
+
+
+      .card {
+        height:330px;
+
+      }
+
+    </style>
